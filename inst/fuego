@@ -1,0 +1,4 @@
+#!/bin/sh
+FUN=$1
+shift
+R -e "fue::go($FUN)" --args $@

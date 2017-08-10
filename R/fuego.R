@@ -59,3 +59,30 @@ go <- function(FUN, args=commandArgs(TRUE)) {
 .onAttach <- function(libname, pkgname){
   if(interactive()) stop("DO NOT ATTACH FUE::GO")
 }
+
+#' Convience decorator for script functions
+#'
+#' This wraps a function, so that it evaluates when
+#' printed; this removes the need for explicit parentheses.
+#'
+#'  *** HACK ***
+#'
+#'
+#' @export
+#' @importFrom purrr partial
+scriptize <- function(FUN) {
+  stopifnot(requireNamespace("purrr"))
+  structure(purrr::partial(go, FUN=FUN), class="script")
+}
+
+#' @export
+#' @rdname scriptize
+print.script <- function(x, ...) {
+  if(interactive()){
+    cat("SCRIPT*****************\n");
+    print(unclass(x))
+    return(NULL)
+  }
+  x()
+
+}

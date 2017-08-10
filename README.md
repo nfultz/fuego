@@ -8,7 +8,7 @@ This was inspired by Fire in python.
 
 Shell arguments that begin with "–" set named arguments, everything else is matched positionally using standard R matching rules.
 
-##Examples
+## Examples
 
     # the following all call scale(mtcars, center=TRUE, scale=FALSE)
     R -e "fue::go(scale)" --args  --no-scale --center --x=mtcars
@@ -22,8 +22,6 @@ Shell arguments that begin with "–" set named arguments, everything else is ma
 
     # included is a shell script "fuego" that does all the boilerplate:
     fuego scale --no-scale mtcars TRUE
-
-## End(Not run)
 
 ## See also
 
